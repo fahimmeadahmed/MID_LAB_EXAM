@@ -14,14 +14,15 @@ router.post('/', function(req, res){
     };
     console.log(req.body);
     if(req.body.username=='admin' && req.body.password=='12345'){
-        req.session.username = user.uname;
+        req.session.username = req.body.username;
         res.redirect('/admin');
     }
     else{
-        employeeModel.validate(user, function(status){
+        employeeModel.validate(user, function(result,status){
             if(status){
-                req.session.username = user.uname;
-                res.redirect('/home');
+                req.session.username = user.username;
+                req.session.empId=result[0].empId;
+                res.redirect('/employee');
             }else{
                 res.send('invalid username/password<br/><a href="/login">Login</a>');
             }
@@ -30,5 +31,7 @@ router.post('/', function(req, res){
 
 
 });
+
+
 
 module.exports = router;

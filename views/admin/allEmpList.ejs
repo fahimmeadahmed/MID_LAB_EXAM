@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>All Employee List</title>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <div>
+                <table >
+                    <thead>
+                    <tr>
+                        <th>EmpID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Designation</th>
+                        <th>Action</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%for (var i =0; i<results.length;i++){%>
+                    <tr>
+                        <td><%=results[i].e_id%></td>
+                        <td><%=results[i].name%></td>
+                        <td><%=results[i].phone%></td>
+                        <td><%=results[i].gender%></td>
+                        <td><%=results[i].Designation%></td>
+                        <td>
+                        <td colspan="2"><a href="/admin/update/<%= emp.empId %>">Update</a> | <a href="/admin/delete/<%= emp.empId %>">Delete</a></td>
+                        </td>
+                    </tr>
+                    <% }%>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+</div>
+</body>
+</html>
